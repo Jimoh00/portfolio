@@ -1,0 +1,1916 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#11130f">
+    <meta name="description" content="Jimoh AbdulRasheed — developer, designer, and curious learner.">
+    <title>02 — Type Only | Jimoh AbdulRasheed</title>
+    <script>
+      tailwind = {
+        config: {
+          theme: {
+            extend: {
+              colors: {
+                ink: "var(--color-ink)",
+                paper: "var(--color-paper)",
+                lime: "var(--color-lime)",
+                muted: "var(--color-muted)"
+              },
+              fontFamily: {
+                body: ["DM Sans", "sans-serif"],
+                display: ["Pixelify Sans", "monospace"]
+              }
+            }
+          }
+        }
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../v1/styles.css">
+    <script src="../v1/main.js" defer></script>
+    <style>
+      .variant-type {
+        --color-ink: #11130f;
+        --color-paper: #f2f1e9;
+        --color-lime: #c1ff00;
+        --color-muted: #a4a69e;
+        --color-rule: rgb(242 241 233 / 16%);
+        --color-contact: #304b35;
+      }
+
+      .variant-type .site-header {
+        min-height: 5.25rem;
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+      .variant-type .wordmark-mark,
+      .variant-type .header-cta span:last-child {
+        color: var(--color-lime);
+      }
+
+      .variant-type .nav-link {
+        color: var(--color-muted);
+      }
+
+      .variant-type .nav-link:hover,
+      .variant-type .nav-link.is-current {
+        color: var(--color-paper);
+      }
+
+      .variant-type .nav-link.is-current::after {
+        background: var(--color-lime);
+      }
+
+      .type-hero {
+        display: flex;
+        min-height: min(720px, calc(100svh - 5.25rem));
+        flex-direction: column;
+        justify-content: center;
+        padding-block: clamp(4rem, 11vh, 8rem);
+      }
+
+      .type-kicker,
+      .type-side-note,
+      .type-index {
+        font-family: var(--font-display);
+        font-size: 0.68rem;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+
+      .type-kicker {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        color: var(--color-muted);
+      }
+
+      .type-kicker::before {
+        width: 2rem;
+        height: 2px;
+        background: #638c17;
+        content: "";
+      }
+
+      .type-title {
+        max-width: 100%;
+        margin: clamp(2rem, 5vh, 3.5rem) 0;
+        font-family: var(--font-body);
+        font-size: clamp(2.45rem, 10.6vw, 9.5rem);
+        font-weight: 700;
+        letter-spacing: 0.025em;
+        line-height: 0.9;
+      }
+
+      .type-title span {
+        display: block;
+      }
+
+      .type-title .type-last {
+        letter-spacing: 0.035em;
+        color: var(--color-lime);
+      }
+
+      .type-bottom {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(15rem, 0.55fr) auto;
+        align-items: end;
+        gap: 2rem;
+        padding-top: 1.6rem;
+        border-top: 1px solid var(--color-rule);
+      }
+
+      .type-index {
+        color: var(--color-muted);
+      }
+
+      .type-description {
+        max-width: 28rem;
+        margin: 0;
+        font-size: 1rem;
+        line-height: 1.75;
+      }
+
+      .variant-type .button-primary:hover {
+        background: var(--color-paper);
+        color: var(--color-ink);
+      }
+
+      .variant-type .text-link,
+      .variant-type .site-footer {
+        color: var(--color-muted);
+      }
+
+      .type-marquee {
+        overflow: hidden;
+        padding-block: 0.8rem;
+        border-top: 1px solid var(--color-rule);
+        border-bottom: 1px solid var(--color-rule);
+        color: var(--color-muted);
+        font-family: var(--font-display);
+        font-size: 0.66rem;
+        letter-spacing: 0.18em;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      .selected-work {
+        padding-block: clamp(4.5rem, 10vw, 8rem);
+        border-top: 1px solid var(--color-rule);
+        scroll-margin-top: 2rem;
+      }
+
+      .selected-work-heading {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.7fr);
+        align-items: end;
+        gap: 2rem;
+        margin-bottom: clamp(2.5rem, 5vw, 4.5rem);
+      }
+
+      .selected-work-kicker {
+        margin: 0;
+        color: var(--color-muted);
+        font-family: var(--font-display);
+        font-size: 0.68rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .selected-work-title {
+        margin: 0.8rem 0 0;
+        font-family: var(--font-display);
+        font-size: clamp(2.8rem, 6vw, 5.5rem);
+        font-weight: 400;
+        letter-spacing: -0.07em;
+        line-height: 0.92;
+        text-transform: uppercase;
+      }
+
+      .selected-work-title span {
+        color: var(--color-lime);
+      }
+
+      .selected-work-intro {
+        max-width: 29rem;
+        margin: 0 0 0.3rem;
+        color: #c3c4bc;
+        font-size: 0.98rem;
+        line-height: 1.75;
+      }
+
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        align-items: start;
+        gap: clamp(1.5rem, 3.2vw, 3.5rem);
+      }
+
+      .project-card {
+        position: relative;
+        overflow: hidden;
+        border-radius: 0.35rem;
+        background: #111312;
+        box-shadow: 0 12px 36px rgb(0 0 0 / 32%);
+      }
+
+      .project-card--featured {
+        grid-column: 1 / span 7;
+      }
+
+      .project-card--secondary {
+        grid-column: 8 / -1;
+        margin-top: clamp(2rem, 7vw, 6rem);
+      }
+
+      .project-card-visual {
+        position: relative;
+        overflow: visible;
+      }
+
+      .project-image-clip {
+        overflow: hidden;
+        aspect-ratio: 2.5 / 2;
+        background: #242624;
+      }
+
+      .project-image-clip img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 450ms cubic-bezier(0.2, 0.7, 0.2, 1);
+      }
+
+      .project-card:hover .project-card-visual img {
+        transform: scale(1.035);
+      }
+
+      .project-card-index {
+        position: absolute;
+        top: 0.9rem;
+        left: 0.9rem;
+        z-index: 2;
+        padding: 0.45rem 0.55rem;
+        background: #111312;
+        color: var(--color-lime);
+        font-family: var(--font-display);
+        font-size: 0.62rem;
+        letter-spacing: 0.08em;
+      }
+
+      .project-pixel-mask {
+        position: absolute;
+        z-index: 2;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: grid;
+        aspect-ratio: 32 / 7;
+        grid-template-columns: repeat(32, minmax(0, 1fr));
+        grid-template-rows: repeat(7, minmax(0, 1fr));
+        transform: translateY(50%);
+        pointer-events: none;
+      }
+
+      .project-pixel-mask span {
+        background: #111312;
+      }
+
+      .project-card-copy {
+        position: relative;
+        z-index: 1;
+        padding:
+          calc(10.95% + 1.25rem)
+          clamp(1.2rem, 2.5vw, 2rem)
+          clamp(1.5rem, 3vw, 2.25rem);
+      }
+
+      .project-card-tech {
+        margin: 0 0 0.65rem;
+        color: rgb(242 241 233 / 52%);
+        font-family: var(--font-display);
+        font-size: 0.62rem;
+        letter-spacing: 0.12em;
+        line-height: 1.6;
+        text-transform: uppercase;
+      }
+
+      .project-card-title {
+        margin: 0;
+        color: var(--color-lime);
+        font-size: clamp(1.45rem, 2.4vw, 2rem);
+        font-weight: 700;
+        letter-spacing: -0.035em;
+      }
+
+      .project-card-description {
+        max-width: 34rem;
+        margin: 0.65rem 0 0;
+        color: rgb(242 241 233 / 76%);
+        font-size: 0.9rem;
+        line-height: 1.7;
+      }
+
+      .project-card-foot {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        margin-top: 1.4rem;
+        padding-top: 0.85rem;
+        border-top: 1px solid rgb(242 241 233 / 13%);
+        color: var(--color-muted);
+        font-family: var(--font-display);
+        font-size: 0.61rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .project-card-foot span:last-child {
+        color: var(--color-lime);
+        font-size: 1rem;
+        transition: transform 180ms ease;
+      }
+
+      .project-card:hover .project-card-foot span:last-child {
+        transform: translate(3px, -3px);
+      }
+
+      .selected-work-outro {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1.5rem;
+        margin-top: clamp(2.5rem, 5vw, 4rem);
+        padding-top: 1rem;
+        border-top: 1px solid var(--color-rule);
+        color: var(--color-muted);
+        font-family: var(--font-display);
+        font-size: 0.64rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .selected-work-outro a {
+        color: var(--color-paper);
+        transition: color 180ms ease;
+      }
+
+      .selected-work-outro a:hover {
+        color: var(--color-lime);
+      }
+
+      .market-case-study {
+        padding-block: clamp(5rem, 10vw, 8rem);
+        border-top: 1px solid var(--color-rule);
+        scroll-margin-top: 2rem;
+      }
+
+      .market-case-heading {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 2rem;
+        margin-bottom: clamp(2.5rem, 5vw, 4rem);
+      }
+
+      .market-case-kicker,
+      .market-case-version,
+      .market-case-label {
+        color: var(--color-muted);
+        font-family: var(--font-display);
+        font-size: 0.64rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+      }
+
+      .market-case-kicker {
+        margin: 0;
+      }
+
+      .market-case-title {
+        margin: 0.85rem 0 0;
+        font-family: var(--font-display);
+        font-size: clamp(3rem, 7vw, 6rem);
+        font-weight: 400;
+        letter-spacing: -0.07em;
+        line-height: 0.9;
+        text-transform: uppercase;
+      }
+
+      .market-case-title span {
+        color: var(--color-lime);
+      }
+
+      .market-case-version {
+        flex: 0 0 auto;
+        margin: 0 0 0.35rem;
+      }
+
+      .market-case-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(25rem, 1.1fr);
+        align-items: center;
+        gap: clamp(2.5rem, 7vw, 7rem);
+      }
+
+      .market-case-story {
+        max-width: 35rem;
+      }
+
+      .market-case-lead {
+        margin: 0;
+        font-size: clamp(1.3rem, 2.4vw, 2rem);
+        font-weight: 600;
+        letter-spacing: -0.045em;
+        line-height: 1.25;
+      }
+
+      .market-case-copy {
+        margin: 1.15rem 0 0;
+        color: rgb(242 241 233 / 78%);
+        font-size: 0.94rem;
+        line-height: 1.8;
+      }
+
+      .market-case-block {
+        margin-top: 2rem;
+        padding-top: 1rem;
+        border-top: 1px solid var(--color-rule);
+      }
+
+      .market-case-label {
+        margin: 0;
+        color: var(--color-lime);
+        font-size: 0.6rem;
+      }
+
+      .market-case-block p:last-child {
+        margin: 0.6rem 0 0;
+        color: rgb(242 241 233 / 78%);
+        font-size: 0.88rem;
+        line-height: 1.75;
+      }
+
+      .market-case-features {
+        display: grid;
+        gap: 0.75rem;
+        margin: 1rem 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .market-case-features li {
+        display: grid;
+        grid-template-columns: 2rem 1fr;
+        gap: 0.7rem;
+        color: rgb(242 241 233 / 83%);
+        font-size: 0.86rem;
+        line-height: 1.6;
+      }
+
+      .market-case-features span {
+        color: var(--color-lime);
+        font-family: var(--font-display);
+        font-size: 0.62rem;
+      }
+
+      .market-case-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+        margin-top: 1rem;
+      }
+
+      .market-case-stack span {
+        padding: 0.4rem 0.55rem;
+        border: 1px solid var(--color-rule);
+        color: var(--color-muted);
+        font-family: var(--font-display);
+        font-size: 0.58rem;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+
+      .market-case-preview {
+        position: relative;
+        display: grid;
+        min-height: 37rem;
+        place-items: center;
+        overflow: hidden;
+        border: 1px solid var(--color-rule);
+        background:
+          linear-gradient(rgb(242 241 233 / 3%) 1px, transparent 1px),
+          linear-gradient(90deg, rgb(242 241 233 / 3%) 1px, transparent 1px),
+          #171a15;
+        background-size: 2.5rem 2.5rem;
+      }
+
+      .market-case-preview::before,
+      .market-case-preview::after {
+        position: absolute;
+        width: 0.55rem;
+        height: 0.55rem;
+        background: var(--color-lime);
+        content: "";
+      }
+
+      .market-case-preview::before {
+        top: 0;
+        left: 0;
+      }
+
+      .market-case-preview::after {
+        right: 0;
+        bottom: 0;
+      }
+
+      .market-case-preview-tag {
+        position: absolute;
+        right: 1rem;
+        bottom: 1rem;
+        color: var(--color-muted);
+        font-family: var(--font-display);
+        font-size: 0.55rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .market-phone {
+        position: relative;
+        width: min(17rem, 72%);
+        padding: 0.55rem;
+        border: 1px solid rgb(242 241 233 / 28%);
+        border-radius: 1.75rem;
+        background: #0c0e0b;
+        box-shadow: 0 2rem 5rem rgb(0 0 0 / 45%), 0 0 0 0.35rem rgb(242 241 233 / 4%);
+      }
+
+      .market-phone-screen {
+        min-height: 32rem;
+        overflow: hidden;
+        padding: 1rem 0.85rem;
+        border-radius: 1.3rem;
+        background: #151812;
+      }
+
+      .market-phone-topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        padding-bottom: 0.85rem;
+        border-bottom: 1px solid rgb(242 241 233 / 10%);
+        font-family: var(--font-display);
+        font-size: 0.62rem;
+        letter-spacing: 0.04em;
+      }
+
+      .market-phone-brand {
+        color: var(--color-lime);
+      }
+
+      .market-phone-avatar {
+        display: grid;
+        width: 1.45rem;
+        height: 1.45rem;
+        place-items: center;
+        border: 1px solid rgb(193 255 0 / 40%);
+        color: var(--color-lime);
+        font-size: 0.58rem;
+      }
+
+      .market-phone-greeting {
+        margin: 1rem 0 0.2rem;
+        color: var(--color-muted);
+        font-size: 0.61rem;
+      }
+
+      .market-phone-heading {
+        margin: 0;
+        font-size: 1rem;
+        font-weight: 600;
+      }
+
+      .market-phone-index {
+        margin-top: 0.85rem;
+        padding: 0.75rem;
+        border: 1px solid rgb(193 255 0 / 20%);
+        background: rgb(193 255 0 / 5%);
+      }
+
+      .market-phone-index-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--color-muted);
+        font-family: var(--font-display);
+        font-size: 0.55rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .market-phone-index-value {
+        margin: 0.55rem 0 0;
+        color: var(--color-paper);
+        font-family: var(--font-display);
+        font-size: 1.35rem;
+      }
+
+      .market-phone-chart {
+        display: block;
+        width: 100%;
+        height: 3.2rem;
+        margin-top: 0.15rem;
+        overflow: visible;
+      }
+
+      .market-phone-chart polyline {
+        fill: none;
+        stroke: var(--color-lime);
+        stroke-dasharray: 220;
+        stroke-dashoffset: 220;
+        stroke-linecap: square;
+        stroke-width: 2;
+        transition: stroke-dashoffset 1.2s ease 350ms;
+      }
+
+      .market-case-preview.is-visible .market-phone-chart polyline {
+        stroke-dashoffset: 0;
+      }
+
+      .market-phone-section-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.5rem;
+        margin: 1rem 0 0.55rem;
+        font-size: 0.65rem;
+        font-weight: 600;
+      }
+
+      .market-phone-section-title span {
+        color: var(--color-lime);
+        font-family: var(--font-display);
+        font-size: 0.5rem;
+        font-weight: 400;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+
+      .market-phone-company {
+        display: grid;
+        grid-template-columns: 1.8rem minmax(0, 1fr) auto;
+        align-items: center;
+        gap: 0.55rem;
+        padding: 0.55rem 0;
+        border-top: 1px solid rgb(242 241 233 / 9%);
+      }
+
+      .market-phone-company-mark {
+        display: grid;
+        width: 1.7rem;
+        height: 1.7rem;
+        place-items: center;
+        background: #23281e;
+        color: var(--color-lime);
+        font-family: var(--font-display);
+        font-size: 0.6rem;
+      }
+
+      .market-phone-company-name {
+        margin: 0;
+        font-size: 0.59rem;
+        font-weight: 600;
+      }
+
+      .market-phone-company-type {
+        margin: 0.15rem 0 0;
+        color: var(--color-muted);
+        font-size: 0.49rem;
+      }
+
+      .market-phone-company-price {
+        color: var(--color-muted);
+        font-family: var(--font-display);
+        font-size: 0.52rem;
+      }
+
+      .market-phone-news {
+        display: grid;
+        grid-template-columns: 1.7rem 1fr;
+        gap: 0.55rem;
+        padding: 0.55rem;
+        border: 1px solid rgb(242 241 233 / 10%);
+        background: #1b1e18;
+      }
+
+      .market-phone-news-mark {
+        display: grid;
+        width: 1.6rem;
+        height: 1.6rem;
+        place-items: center;
+        background: rgb(193 255 0 / 10%);
+        color: var(--color-lime);
+        font-family: var(--font-display);
+        font-size: 0.55rem;
+      }
+
+      .market-phone-news p {
+        margin: 0;
+        font-size: 0.54rem;
+        line-height: 1.45;
+      }
+
+      .market-phone-news small {
+        display: block;
+        margin-top: 0.25rem;
+        color: var(--color-muted);
+        font-family: var(--font-display);
+        font-size: 0.45rem;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+      }
+
+      .market-case-preview.is-visible .market-phone {
+        animation: market-phone-float 5s ease-in-out 1.2s infinite;
+      }
+
+      @keyframes market-phone-float {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-0.45rem); }
+      }
+
+      .market-case-study .market-case-preview[data-reveal] {
+        transition-delay: 120ms;
+      }
+
+      .market-case-study .market-case-block[data-reveal] {
+        transition-delay: 80ms;
+      }
+
+      .about-scroll {
+        position: relative;
+        width: auto;
+        height: 250svh;
+        margin-inline: calc(-1 * var(--page-gutter));
+        scroll-margin-top: 0;
+      }
+
+      .about-stage {
+        position: sticky;
+        top: 0;
+        width: 100%;
+        height: 100svh;
+        min-height: 36rem;
+        overflow: hidden;
+        isolation: isolate;
+        background: var(--color-ink);
+      }
+
+      .about-stage-title {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 1rem;
+        margin: 0;
+        font-family: var(--font-display);
+        font-size: clamp(4rem, 11vw, 10rem);
+        font-weight: 400;
+        letter-spacing: -0.07em;
+        line-height: 0.8;
+        opacity: 1;
+        pointer-events: none;
+        text-transform: uppercase;
+      }
+
+      html.js .about-stage-title {
+        opacity: 1;
+      }
+
+      .about-word {
+        position: relative;
+        display: block;
+        white-space: nowrap;
+      }
+
+      .about-word--top {
+        transform: translateX(0);
+      }
+
+      .about-word--bottom {
+        transform: translateX(0);
+        color: var(--color-lime);
+      }
+
+      .about-image {
+        position: absolute;
+        z-index: 1;
+        top: 50%;
+        left: 50%;
+        width: clamp(10rem, 18vw, 17rem);
+        aspect-ratio: 1;
+        overflow: hidden;
+        background: #242624;
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.82);
+        transform-origin: center;
+        will-change: transform, opacity;
+      }
+
+      html.js .about-image {
+        opacity: 0;
+      }
+
+      .about-image img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+
+      .about-overlay {
+        position: absolute;
+        z-index: 3;
+        inset: 0;
+        background:
+          linear-gradient(90deg, rgb(17 19 15 / 96%) 0%, rgb(17 19 15 / 84%) 36%, rgb(17 19 15 / 34%) 100%),
+          rgb(17 19 15 / 32%);
+        opacity: 1;
+        pointer-events: none;
+      }
+
+      .about-copy {
+        position: absolute;
+        z-index: 4;
+        top: 50%;
+        left: var(--page-gutter);
+        width: min(37rem, calc(100% - var(--page-gutter) * 2));
+        opacity: 1;
+        transform: none;
+        pointer-events: none;
+      }
+
+      html.js .about-overlay {
+        opacity: 0;
+      }
+
+      html.js .about-copy {
+        opacity: 0;
+        transform: translate3d(0, 1.5rem, 0);
+      }
+
+      .about-copy-kicker {
+        margin: 0;
+        color: var(--color-lime);
+        font-family: var(--font-display);
+        font-size: 0.7rem;
+        letter-spacing: 0.17em;
+        text-transform: uppercase;
+      }
+
+      .about-copy-title {
+        margin: 1rem 0 0;
+        font-family: var(--font-display);
+        font-size: clamp(3rem, 6vw, 5.5rem);
+        font-weight: 400;
+        letter-spacing: -0.07em;
+        line-height: 0.9;
+        text-transform: uppercase;
+      }
+
+      .about-copy-description {
+        max-width: 32rem;
+        margin: 1.3rem 0 0;
+        color: rgb(242 241 233 / 83%);
+        font-size: clamp(0.95rem, 1.35vw, 1.1rem);
+        line-height: 1.8;
+      }
+
+      .about-process {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1rem;
+        max-width: 33rem;
+        margin: 2rem 0 0;
+        padding: 1rem 0 0;
+        border-top: 1px solid rgb(242 241 233 / 28%);
+        list-style: none;
+      }
+
+      .about-process li {
+        display: grid;
+        gap: 0.45rem;
+        color: var(--color-paper);
+        font-family: var(--font-display);
+        font-size: 0.68rem;
+        letter-spacing: 0.09em;
+        text-transform: uppercase;
+      }
+
+      .about-process span {
+        color: var(--color-lime);
+        font-size: 0.6rem;
+      }
+
+      .capabilities {
+        padding-block: clamp(4.5rem, 10vw, 8rem);
+        border-top: 1px solid var(--color-rule);
+        scroll-margin-top: 2rem;
+      }
+
+      .capabilities-heading {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.7fr);
+        align-items: end;
+        gap: 2rem;
+        margin-bottom: clamp(2.5rem, 5vw, 4rem);
+      }
+
+      .capabilities-kicker {
+        margin: 0;
+        color: var(--color-muted);
+        font-family: var(--font-display);
+        font-size: 0.68rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .capabilities-title {
+        margin: 0.8rem 0 0;
+        font-family: var(--font-display);
+        font-size: clamp(2.8rem, 6vw, 5.5rem);
+        font-weight: 400;
+        letter-spacing: -0.07em;
+        line-height: 0.92;
+        text-transform: uppercase;
+      }
+
+      .capabilities-title span {
+        color: var(--color-lime);
+      }
+
+      .capabilities-intro {
+        max-width: 29rem;
+        margin: 0 0 0.3rem;
+        color: #c3c4bc;
+        font-size: 0.98rem;
+        line-height: 1.75;
+      }
+
+      .capabilities-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: clamp(0.8rem, 1.8vw, 1.5rem);
+      }
+
+      .capability-card {
+        position: relative;
+        min-height: 18rem;
+        overflow: hidden;
+        padding: clamp(1.25rem, 2.4vw, 2rem);
+        border: 1px solid var(--color-rule);
+        background: #171915;
+        transition: border-color 220ms ease, background-color 220ms ease;
+      }
+
+      .capability-card::before {
+        position: absolute;
+        top: -1px;
+        right: 0;
+        left: 0;
+        height: 2px;
+        background: var(--color-lime);
+        content: "";
+        transform: scaleX(0);
+        transform-origin: left;
+        transition: transform 650ms cubic-bezier(0.2, 0.7, 0.2, 1);
+      }
+
+      .capability-card.is-visible::before {
+        transform: scaleX(1);
+      }
+
+      .capability-card:hover {
+        border-color: rgb(193 255 0 / 48%);
+        background: #1b1e18;
+      }
+
+      .capability-card[data-reveal]:nth-child(2) {
+        transition-delay: 100ms;
+      }
+
+      .capability-card[data-reveal]:nth-child(3) {
+        transition-delay: 200ms;
+      }
+
+      .capability-card-index {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        color: var(--color-muted);
+        font-family: var(--font-display);
+        font-size: 0.68rem;
+        letter-spacing: 0.13em;
+      }
+
+      .capability-pixels {
+        display: grid;
+        width: 2.35rem;
+        grid-template-columns: repeat(3, 0.42rem);
+        grid-template-rows: repeat(3, 0.42rem);
+        gap: 0.16rem;
+      }
+
+      .capability-pixel {
+        background: rgb(242 241 233 / 20%);
+        opacity: 0;
+        transform: scale(0.35);
+      }
+
+      .capability-pixel:nth-child(3n + 1),
+      .capability-pixel:nth-child(5) {
+        background: var(--color-lime);
+      }
+
+      .capability-card.is-visible .capability-pixel {
+        animation: capability-pixel-in 360ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+      }
+
+      .capability-card.is-visible .capability-pixel:nth-child(2),
+      .capability-card.is-visible .capability-pixel:nth-child(4) {
+        animation-delay: 60ms;
+      }
+
+      .capability-card.is-visible .capability-pixel:nth-child(3),
+      .capability-card.is-visible .capability-pixel:nth-child(7) {
+        animation-delay: 120ms;
+      }
+
+      .capability-card.is-visible .capability-pixel:nth-child(6),
+      .capability-card.is-visible .capability-pixel:nth-child(8) {
+        animation-delay: 180ms;
+      }
+
+      .capability-card.is-visible .capability-pixel:nth-child(9) {
+        animation-delay: 240ms;
+      }
+
+      @keyframes capability-pixel-in {
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .capability-title {
+        margin: clamp(2.5rem, 5vw, 4rem) 0 0.85rem;
+        font-size: clamp(1.25rem, 2vw, 1.7rem);
+        font-weight: 600;
+        letter-spacing: -0.04em;
+      }
+
+      .capability-description {
+        max-width: 25rem;
+        margin: 0;
+        color: rgb(242 241 233 / 76%);
+        font-size: 0.9rem;
+        line-height: 1.75;
+      }
+
+      .capability-tools {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.45rem;
+        margin: 1.4rem 0 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .capability-tools li {
+        padding: 0.35rem 0.5rem;
+        border: 1px solid rgb(242 241 233 / 14%);
+        color: var(--color-muted);
+        font-family: var(--font-display);
+        font-size: 0.58rem;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+      }
+
+      .contact-section {
+        position: relative;
+        isolation: isolate;
+        display: grid;
+        width: var(--contact-viewport-width, 100vw);
+        min-height: 31rem;
+        place-items: center;
+        margin:
+          clamp(8rem, 13vw, 12rem)
+          calc(50% - 50vw + (100vw - var(--contact-viewport-width, 100vw)) / 2)
+          clamp(5rem, 9vw, 8rem);
+        padding: clamp(6.5rem, 10vw, 9rem) var(--page-gutter);
+        background: var(--color-contact);
+        text-align: center;
+        scroll-margin-top: 2rem;
+      }
+
+      .contact-pixel-edge {
+        position: absolute;
+        right: 0;
+        left: 0;
+        display: grid;
+        --pixel-columns: 48;
+        aspect-ratio: 12 / 1;
+        grid-template-columns: repeat(var(--pixel-columns), minmax(0, 1fr));
+        grid-template-rows: repeat(4, minmax(0, 1fr));
+        pointer-events: none;
+      }
+
+      .contact-pixel-edge--top {
+        bottom: 100%;
+      }
+
+      .contact-pixel-edge--bottom {
+        top: 100%;
+      }
+
+      .contact-pixel {
+        background: var(--color-contact);
+        opacity: 0;
+        transform: scale(0.35);
+        transform-origin: center;
+      }
+
+      .contact-section.is-visible .contact-pixel {
+        animation: contact-pixel-in 420ms cubic-bezier(0.2, 0.7, 0.2, 1) var(--pixel-delay) both;
+      }
+
+      @keyframes contact-pixel-in {
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .contact-copy {
+        width: min(100%, 55rem);
+      }
+
+      .contact-kicker {
+        margin: 0;
+        color: var(--color-lime);
+        font-family: var(--font-display);
+        font-size: 0.7rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+      }
+
+      .contact-title {
+        margin: 1.25rem 0 0;
+        font-family: var(--font-display);
+        font-size: clamp(3rem, 8.5vw, 7rem);
+        font-weight: 400;
+        letter-spacing: -0.07em;
+        line-height: 0.9;
+        text-transform: uppercase;
+      }
+
+      .contact-title span {
+        display: block;
+        color: var(--color-lime);
+      }
+
+      .contact-description {
+        max-width: 34rem;
+        margin: 1.5rem auto 0;
+        color: rgb(242 241 233 / 86%);
+        font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+        line-height: 1.8;
+      }
+
+      .contact-signoff {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.8rem;
+        margin: 2.25rem 0 0;
+        color: rgb(242 241 233 / 68%);
+        font-family: var(--font-display);
+        font-size: 0.62rem;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+
+      .contact-signoff::before,
+      .contact-signoff::after {
+        width: clamp(1.5rem, 5vw, 4rem);
+        height: 1px;
+        background: rgb(242 241 233 / 35%);
+        content: "";
+      }
+
+      .contact-kicker[data-reveal] {
+        transition-delay: 80ms;
+      }
+
+      .contact-title[data-reveal] {
+        transition-delay: 160ms;
+      }
+
+      .contact-description[data-reveal],
+      .contact-signoff[data-reveal] {
+        transition-delay: 240ms;
+      }
+
+      @media (max-width: 680px) {
+        .capabilities-heading {
+          grid-template-columns: 1fr;
+          gap: 1.25rem;
+        }
+
+        .capabilities-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .capability-card {
+          min-height: 16rem;
+        }
+
+        .capability-title {
+          margin-top: 2.25rem;
+        }
+
+        .contact-section {
+          min-height: 28rem;
+          margin-top: 7rem;
+          padding-block: 6rem;
+        }
+
+        .contact-pixel-edge {
+          --pixel-columns: 32;
+          aspect-ratio: 8 / 1;
+        }
+
+        .contact-title {
+          font-size: clamp(2.7rem, 12vw, 4.4rem);
+        }
+
+        .contact-description {
+          margin-top: 1.1rem;
+          font-size: 0.94rem;
+        }
+
+        .contact-signoff {
+          margin-top: 1.8rem;
+          font-size: 0.55rem;
+        }
+
+        .about-scroll {
+          height: 220svh;
+        }
+
+        .about-stage {
+          min-height: 34rem;
+        }
+
+        .about-stage-title {
+          gap: 0.6rem;
+          font-size: clamp(3.2rem, 14vw, 5.5rem);
+        }
+
+        .about-image {
+          width: clamp(10rem, 48vw, 13rem);
+        }
+
+        .about-overlay {
+          background:
+            linear-gradient(90deg, rgb(17 19 15 / 94%) 0%, rgb(17 19 15 / 72%) 100%),
+            rgb(17 19 15 / 36%);
+        }
+
+        .about-copy {
+          top: 50%;
+        }
+
+        .about-copy-title {
+          font-size: clamp(2.7rem, 12vw, 4rem);
+        }
+
+        .about-copy-description {
+          margin-top: 1rem;
+          font-size: 0.92rem;
+        }
+
+        .about-process {
+          gap: 0.65rem;
+          margin-top: 1.4rem;
+        }
+
+        .about-process li {
+          font-size: 0.58rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .about-scroll {
+          width: auto;
+          height: auto;
+        }
+
+        .about-stage {
+          position: relative;
+          min-height: 42rem;
+        }
+
+        html.js .about-stage-title {
+          opacity: 0;
+        }
+
+        html.js .about-image {
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          aspect-ratio: auto;
+          opacity: 1;
+          transform: none;
+        }
+
+        html.js .about-overlay {
+          opacity: 1;
+        }
+
+        html.js .about-copy {
+          opacity: 1;
+          transform: none;
+        }
+
+        .contact-pixel {
+          opacity: 1;
+          transform: none;
+          animation: none !important;
+        }
+
+        .market-phone,
+        .market-phone-chart polyline {
+          animation: none !important;
+          transition: none !important;
+          transform: none;
+          stroke-dashoffset: 0;
+        }
+      }
+
+      .variant-type .variation-nav a {
+        border-color: var(--color-rule);
+      }
+
+      .variant-type a:focus-visible,
+      .variant-type button:focus-visible {
+        outline-color: var(--color-lime);
+      }
+
+      @media (max-width: 760px) {
+        .selected-work-heading {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+        }
+
+        .market-case-heading {
+          align-items: flex-start;
+        }
+
+        .market-case-layout {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .market-case-story {
+          max-width: none;
+        }
+
+        .market-case-preview {
+          min-height: 36rem;
+        }
+
+        .project-grid {
+          grid-template-columns: minmax(0, 1fr);
+          gap: 2rem;
+        }
+
+        .project-card--featured,
+        .project-card--secondary {
+          grid-column: 1;
+        }
+
+        .project-card--secondary {
+          margin-top: 0;
+        }
+      }
+
+      .type-loader {
+        position: fixed;
+        z-index: 100;
+        inset: 0;
+        display: none;
+        place-items: center;
+        overflow: hidden;
+        background: #62645e;
+        color: var(--color-paper);
+      }
+
+      .type-loader.is-pixelating {
+        background: transparent;
+      }
+
+      html.js .type-loader {
+        display: grid;
+      }
+
+      .type-loader-content {
+        position: absolute;
+        z-index: 2;
+        right: clamp(1.25rem, 5vw, 5.5rem);
+        bottom: clamp(1.25rem, 5vh, 3rem);
+        display: flex;
+        align-items: baseline;
+        gap: 0.2rem;
+        font-family: var(--font-display);
+        font-variant-numeric: tabular-nums;
+      }
+
+      .type-loader-count {
+        font-size: clamp(5.5rem, 14vw, 11rem);
+        letter-spacing: -0.04em;
+        line-height: 0.9;
+      }
+
+      .type-loader-percent {
+        color: var(--color-lime);
+        font-family: var(--font-display);
+        font-size: clamp(1.5rem, 3vw, 2.5rem);
+      }
+
+      .type-loader-label {
+        position: absolute;
+        right: 0;
+        bottom: calc(100% + 0.65rem);
+        color: var(--color-paper);
+        font-family: var(--font-display);
+        font-size: 0.68rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .type-loader-pixels {
+        position: absolute;
+        z-index: 1;
+        inset: 0;
+        display: grid;
+        grid-template-columns: repeat(var(--pixel-columns), minmax(0, 1fr));
+        grid-template-rows: repeat(var(--pixel-rows), minmax(0, 1fr));
+      }
+
+      .type-loader-pixel {
+        background: #62645e;
+        opacity: 1;
+        transition: opacity 520ms ease var(--chunk-delay, 0ms);
+      }
+
+      .type-loader-pixel.is-hidden {
+        opacity: 0;
+      }
+
+      .type-loader.is-fading {
+        opacity: 0;
+        transition: opacity 180ms ease;
+      }
+
+      @media (max-width: 680px) {
+        .variant-type .site-header {
+          grid-template-columns: 1fr auto;
+        }
+
+        .variant-type .header-cta {
+          display: none;
+        }
+
+        .type-hero {
+          min-height: auto;
+          padding-block: 5rem 4rem;
+        }
+
+        .type-title {
+          margin-block: 2.3rem;
+          font-size: clamp(2.2rem, 10.6vw, 4.5rem);
+          letter-spacing: 0.015em;
+        }
+
+        .type-title .type-last {
+          letter-spacing: 0.02em;
+        }
+
+        .type-loader-count {
+          font-size: clamp(5rem, 24vw, 8rem);
+        }
+
+        .type-bottom {
+          grid-template-columns: minmax(0, 1fr);
+          align-items: start;
+          gap: 1rem;
+        }
+
+        .type-bottom .button {
+          justify-self: start;
+          margin-top: 0.25rem;
+        }
+
+        .type-index {
+          grid-column: 1;
+        }
+
+        .type-description {
+          font-size: 0.92rem;
+        }
+
+        .market-case-study {
+          padding-block: 4.5rem;
+        }
+
+        .market-case-heading {
+          display: grid;
+          gap: 1rem;
+        }
+
+        .market-case-version {
+          margin: 0;
+        }
+
+        .market-case-layout {
+          gap: 2rem;
+        }
+
+        .market-case-lead {
+          font-size: 1.35rem;
+        }
+
+        .market-case-preview {
+          min-height: 33rem;
+        }
+
+        .market-phone {
+          width: min(16rem, 76%);
+        }
+
+        .market-phone-screen {
+          min-height: 30rem;
+        }
+      }
+    </style>
+  </head>
+  <body class="variant-type bg-ink font-body text-paper antialiased">
+    <div class="type-loader" id="type-loader" role="status" aria-label="Loading portfolio">
+      <div class="type-loader-content" aria-hidden="true">
+        <span class="type-loader-count" id="type-loader-count">0</span>
+        <span class="type-loader-percent">%</span>
+        <span class="type-loader-label">Loading portfolio</span>
+      </div>
+      <div class="type-loader-pixels" aria-hidden="true"></div>
+    </div>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="page-frame">
+      <header class="site-header" id="home">
+        <a class="wordmark" href="#home" aria-label="Jimoh AbdulRasheed, home">
+          <span class="wordmark-mark" aria-hidden="true">&lt;j /&gt;</span>
+          <span>JIMOH</span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+          <span class="menu-toggle-label">Menu</span>
+          <span class="menu-toggle-icon" aria-hidden="true"><i></i><i></i></span>
+        </button>
+        <nav class="site-nav" id="primary-navigation" aria-label="Main navigation">
+          <a class="nav-link is-current" href="#home">Home</a>
+          <a class="nav-link" href="#about">About</a>
+          <a class="nav-link" href="#work">What I make</a>
+          <a class="nav-link" href="#contact">Contact</a>
+        </nav>
+        <a class="header-cta" href="#work"><span>Explore my work</span><span aria-hidden="true">↗</span></a>
+      </header>
+
+      <main id="main">
+        <section class="type-hero" aria-labelledby="hero-title">
+          <p class="type-kicker" data-reveal>Independent developer &amp; designer</p>
+          <h1 class="type-title" id="hero-title" data-reveal>
+            <span>Jimoh</span>
+            <span class="type-last">AbdulRasheed.</span>
+          </h1>
+          <div class="type-bottom" data-reveal>
+            <span class="type-index">A curious mind / 001</span>
+            <p class="type-description">
+              I like figuring things out — usually by building, breaking, and trying again.
+              Websites, experiments, and digital products made with care.
+            </p>
+            <a class="button button-primary" href="#work">
+              <span>See what I make</span><span class="button-arrow" aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </section>
+        <section class="selected-work" id="work" aria-labelledby="selected-work-title">
+          <div class="selected-work-heading" data-reveal>
+            <div>
+              <p class="selected-work-kicker">Things I’ve made · 01—02</p>
+              <h2 class="selected-work-title" id="selected-work-title">Built from <span>ideas.</span></h2>
+            </div>
+            <p class="selected-work-intro">
+              Websites, experiments, and digital products — each one starting as an idea
+              and ending as something you can actually use.
+            </p>
+          </div>
+
+          <div class="project-grid">
+            <article class="project-card project-card--featured" data-reveal>
+              <div class="project-card-visual">
+                <div class="project-image-clip">
+                  <img
+                    src="../public/images/mockup-1.webp"
+                    alt="Desktop mockup showing a colorful geometric design concept"
+                    loading="lazy"
+                  >
+                </div>
+                <span class="project-card-index">PROJECT / 001</span>
+                <div class="project-pixel-mask" data-pixel-mask aria-hidden="true"></div>
+              </div>
+              <div class="project-card-copy">
+                <p class="project-card-tech">Vite · React · GSAP · Tailwind CSS</p>
+                <h3 class="project-card-title">Nova Studio</h3>
+                <p class="project-card-description">
+                  A considered digital home for a creative studio, built around clear typography and bold geometry.
+                </p>
+                <div class="project-card-foot">
+                  <span>Creative studio / Web</span>
+                  <span aria-hidden="true">↗</span>
+                </div>
+              </div>
+            </article>
+
+            <article class="project-card project-card--secondary" data-reveal>
+              <div class="project-card-visual">
+                <div class="project-image-clip">
+                  <img
+                    src="../public/images/phone-mockup.webp"
+                    alt="Angled phone mockup displaying a colorful geometric design concept"
+                    loading="lazy"
+                  >
+                </div>
+                <span class="project-card-index">PROJECT / 002</span>
+                <div class="project-pixel-mask" data-pixel-mask aria-hidden="true"></div>
+              </div>
+              <div class="project-card-copy">
+                <p class="project-card-tech">React · GSAP · Tailwind CSS</p>
+                <h3 class="project-card-title">Northstar Studio</h3>
+                <p class="project-card-description">
+                  A considered digital home for a creative studio, built around clear typography and bold geometry.
+                </p>
+                <div class="project-card-foot">
+                  <span>Creative studio / Mobile</span>
+                  <span aria-hidden="true">↗</span>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="selected-work-outro">
+            <span>More experiments are always in progress.</span>
+            <a href="#home">Back to top ↑</a>
+          </div>
+        </section>
+
+        <section class="market-case-study" id="case-study" aria-labelledby="market-case-title">
+          <div class="market-case-heading" data-reveal>
+            <div>
+              <p class="market-case-kicker">Featured case study / Mobile app</p>
+              <h2 class="market-case-title" id="market-case-title">Market <span>Lens.</span></h2>
+            </div>
+            <p class="market-case-version">Version 01 / Working name</p>
+          </div>
+
+          <div class="market-case-layout">
+            <div class="market-case-story">
+              <p class="market-case-lead" data-reveal>
+                Before considering a company, I wanted to understand it. Getting that context meant jumping between too many places.
+              </p>
+              <p class="market-case-copy" data-reveal>
+                While learning about investing, I kept hearing the same advice: research a company, its financials, and what is happening around it. I built a mobile app to bring that research into one place and make it easier to follow the Nigerian market.
+              </p>
+
+              <div class="market-case-block" data-reveal>
+                <p class="market-case-label">01 / The research flow</p>
+                <ul class="market-case-features">
+                  <li><span>01</span>See the market index and browse companies listed on NGX.</li>
+                  <li><span>02</span>Check a company’s share price and latest financial statement.</li>
+                  <li><span>03</span>Follow company, market, and Nigerian economic news.</li>
+                </ul>
+              </div>
+
+              <div class="market-case-block" data-reveal>
+                <p class="market-case-label">02 / Working with API limits</p>
+                <p>
+                  Free data sources did not cover everything I needed, so I combined tools: Tavily to search for company information and Groq to summarize selected details.
+                </p>
+              </div>
+
+              <div class="market-case-block" data-reveal>
+                <p class="market-case-label">03 / Built with</p>
+                <div class="market-case-stack" aria-label="Technology stack">
+                  <span>React Native</span>
+                  <span>Supabase</span>
+                  <span>NGN API</span>
+                  <span>Tavily API</span>
+                  <span>Groq API</span>
+                </div>
+              </div>
+            </div>
+
+            <figure class="market-case-preview" data-reveal aria-label="Illustrative Market Lens app preview. It contains no live market data.">
+              <div class="market-phone" aria-hidden="true">
+                <div class="market-phone-screen">
+                  <div class="market-phone-topbar">
+                    <span class="market-phone-brand">&lt;ML /&gt;</span>
+                    <span>MARKET LENS</span>
+                    <span class="market-phone-avatar">J</span>
+                  </div>
+                  <p class="market-phone-greeting">YOUR RESEARCH DESK</p>
+                  <h3 class="market-phone-heading">Market, at a glance.</h3>
+
+                  <div class="market-phone-index">
+                    <div class="market-phone-index-top">
+                      <span>NGX market index</span>
+                      <span>Overview</span>
+                    </div>
+                    <p class="market-phone-index-value">Market snapshot</p>
+                    <svg class="market-phone-chart" viewBox="0 0 220 48" aria-hidden="true">
+                      <polyline points="0,37 24,32 43,36 66,20 87,25 105,12 127,18 145,8 165,16 184,5 202,12 220,2"></polyline>
+                    </svg>
+                  </div>
+
+                  <h4 class="market-phone-section-title">Companies <span>Browse NGX →</span></h4>
+                  <div class="market-phone-company">
+                    <span class="market-phone-company-mark">01</span>
+                    <span>
+                      <p class="market-phone-company-name">Company profile</p>
+                      <p class="market-phone-company-type">Share price · latest financials</p>
+                    </span>
+                    <span class="market-phone-company-price">OPEN ↗</span>
+                  </div>
+                  <div class="market-phone-company">
+                    <span class="market-phone-company-mark">02</span>
+                    <span>
+                      <p class="market-phone-company-name">Company profile</p>
+                      <p class="market-phone-company-type">Business · company news</p>
+                    </span>
+                    <span class="market-phone-company-price">OPEN ↗</span>
+                  </div>
+
+                  <h4 class="market-phone-section-title">News &amp; context <span>VIEW ALL →</span></h4>
+                  <div class="market-phone-news">
+                    <span class="market-phone-news-mark">N</span>
+                    <p>
+                      Company, market, and Nigerian economic coverage in one research feed.
+                      <small>Company · Market · Economy</small>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <figcaption class="market-case-preview-tag">Illustrative interface · no live data</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <section class="about-scroll" id="about" aria-labelledby="about-stage-title">
+          <div class="about-stage">
+            <h2 class="about-stage-title" id="about-stage-title">
+              <span class="about-word about-word--top">About</span>
+              <span class="about-word about-word--bottom">Me</span>
+            </h2>
+            <div class="about-image" aria-hidden="true">
+              <img src="../public/project-preview.svg" alt="">
+            </div>
+            <div class="about-overlay" aria-hidden="true"></div>
+            <div class="about-copy">
+              <p class="about-copy-kicker">How I think / 01—03</p>
+              <h3 class="about-copy-title">Build. Break.<br>Try again.</h3>
+              <p class="about-copy-description">
+                I like figuring things out — following a question, building an idea,
+                learning what doesn’t work, then trying again until it feels right.
+              </p>
+              <ol class="about-process" aria-label="My approach">
+                <li><span>01</span>Explore</li>
+                <li><span>02</span>Build</li>
+                <li><span>03</span>Refine</li>
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        <section class="capabilities" id="capabilities" aria-labelledby="capabilities-title">
+          <div class="capabilities-heading" data-reveal>
+            <div>
+              <p class="capabilities-kicker">How I can help · 01—03</p>
+              <h2 class="capabilities-title" id="capabilities-title">What I <span>do.</span></h2>
+            </div>
+            <p class="capabilities-intro">
+              I bring ideas to life with thoughtful interfaces, solid frontend foundations,
+              and details that make a site feel good to use.
+            </p>
+          </div>
+
+          <div class="capabilities-grid">
+            <article class="capability-card" data-reveal>
+              <div class="capability-card-index">
+                <span>01 / Build</span>
+                <span class="capability-pixels" aria-hidden="true">
+                  <i class="capability-pixel"></i><i class="capability-pixel"></i><i class="capability-pixel"></i>
+                  <i class="capability-pixel"></i><i class="capability-pixel"></i><i class="capability-pixel"></i>
+                  <i class="capability-pixel"></i><i class="capability-pixel"></i><i class="capability-pixel"></i>
+                </span>
+              </div>
+              <h3 class="capability-title">Frontend development</h3>
+              <p class="capability-description">
+                Responsive, accessible websites and mobile apps built with care from the first component to the final detail.
+              </p>
+              <ul class="capability-tools" aria-label="Technologies">
+                <li>React</li><li>JavaScript</li><li>Mobile apps</li>
+              </ul>
+            </article>
+
+            <article class="capability-card" data-reveal>
+              <div class="capability-card-index">
+                <span>02 / Shape</span>
+                <span class="capability-pixels" aria-hidden="true">
+                  <i class="capability-pixel"></i><i class="capability-pixel"></i><i class="capability-pixel"></i>
+                  <i class="capability-pixel"></i><i class="capability-pixel"></i><i class="capability-pixel"></i>
+                  <i class="capability-pixel"></i><i class="capability-pixel"></i><i class="capability-pixel"></i>
+                </span>
+              </div>
+              <h3 class="capability-title">Interface implementation</h3>
+              <p class="capability-description">
+                Clear, considered layouts that turn a visual direction into a usable digital experience.
+              </p>
+              <ul class="capability-tools" aria-label="Technologies">
+                <li>HTML</li><li>CSS</li><li>Responsive UI</li>
+              </ul>
+            </article>
+
+            <article class="capability-card" data-reveal>
+              <div class="capability-card-index">
+                <span>03 / Move</span>
+                <span class="capability-pixels" aria-hidden="true">
+                  <i class="capability-pixel"></i><i class="capability-pixel"></i><i class="capability-pixel"></i>
+                  <i class="capability-pixel"></i><i class="capability-pixel"></i><i class="capability-pixel"></i>
+                  <i class="capability-pixel"></i><i class="capability-pixel"></i><i class="capability-pixel"></i>
+                </span>
+              </div>
+              <h3 class="capability-title">Interactive experiences</h3>
+              <p class="capability-description">
+                Subtle motion and playful interactions that add personality without getting in the way.
+              </p>
+              <ul class="capability-tools" aria-label="Technologies">
+                <li>GSAP</li><li>JavaScript</li><li>Motion</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="contact-section" id="contact" aria-labelledby="contact-title" data-reveal>
+          <div class="contact-pixel-edge contact-pixel-edge--top" data-contact-pixel-edge="top" aria-hidden="true"></div>
+          <div class="contact-copy">
+            <p class="contact-kicker" data-reveal>A good place to start</p>
+            <h2 class="contact-title" id="contact-title" data-reveal>
+              Have an idea?
+              <span>Let’s make it real.</span>
+            </h2>
+            <p class="contact-description" data-reveal>
+              Every good project starts with a question. Bring yours, and let’s see what we can build.
+            </p>
+            <p class="contact-signoff" data-reveal>Thoughtful work · Built with care</p>
+          </div>
+          <div class="contact-pixel-edge contact-pixel-edge--bottom" data-contact-pixel-edge="bottom" aria-hidden="true"></div>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <span>JIMOH ABDULRASHEED</span>
+        <span>DEVELOPER · DESIGNER · CURIOUS LEARNER</span>
+        <nav class="variation-nav" aria-label="Home page concepts">
+          <a href="index.html">01 Grid</a>
+          <a aria-current="page" href="type-only.html">02 Type</a>
+          <a href="playground.html">03 Play</a>
+        </nav>
+      </footer>
+    </div>
+  </body>
+</html>

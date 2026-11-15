@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" fill="none">
+  <rect width="1200" height="800" fill="#151713"/>
+  <path d="M0 0h1200v800H0z" fill="url(#grain)"/>
+  <path d="M64 84h1072" stroke="#45483D" stroke-width="2"/>
+  <rect x="64" y="42" width="28" height="28" fill="#C1FF00"/>
+  <path d="M74 51h8v10h-8z" fill="#151713"/>
+  <text x="108" y="64" fill="#F3F4EC" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="3">NORTHSTAR</text>
+  <text x="1012" y="64" fill="#A7AA9D" font-family="Arial, sans-serif" font-size="13" letter-spacing="2">INDEPENDENT STUDIO</text>
+  <text x="66" y="162" fill="#C1FF00" font-family="Arial, sans-serif" font-size="14" letter-spacing="4">DESIGN / DIGITAL / DIRECTION</text>
+  <text x="60" y="330" fill="#F3F4EC" font-family="Arial, sans-serif" font-size="136" font-weight="700" letter-spacing="-8">MAKE</text>
+  <text x="60" y="466" fill="#F3F4EC" font-family="Arial, sans-serif" font-size="136" font-weight="700" letter-spacing="-8">IT</text>
+  <text x="60" y="602" fill="#F3F4EC" font-family="Arial, sans-serif" font-size="136" font-weight="700" letter-spacing="-8">MATTER.</text>
+  <path d="M745 226h134v134H745zM879 360h134v134H879zM745 494h134v134H745z" fill="#C1FF00"/>
+  <path d="M879 226h134v134H879zM1013 360h134v134h-134zM879 494h134v134H879z" fill="#7E9F14"/>
+  <path d="M1013 226h134v134h-134zM745 360h134v134H745zM1013 494h134v134h-134z" fill="#32362A"/>
+  <path d="M64 694h1072" stroke="#45483D" stroke-width="2"/>
+  <text x="64" y="742" fill="#A7AA9D" font-family="Arial, sans-serif" font-size="14" letter-spacing="2">INDEPENDENT BY NATURE</text>
+  <text x="1030" y="742" fill="#C1FF00" font-family="Arial, sans-serif" font-size="14" letter-spacing="2">SCROLL TO EXPLORE</text>
+  <defs>
+    <pattern id="grain" width="8" height="8" patternUnits="userSpaceOnUse">
+      <path d="M0 7.5h1M4 3.5h1" stroke="#fff" stroke-opacity=".025"/>
+    </pattern>
+  </defs>
+</svg>

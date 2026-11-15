@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#11130f">
+    <meta name="description" content="Jimoh AbdulRasheed — developer, designer, and curious learner.">
+    <title>Jimoh AbdulRasheed — Developer &amp; Designer</title>
+    <script>
+      tailwind = {
+        config: {
+          theme: {
+            extend: {
+              colors: {
+                ink: "var(--color-ink)",
+                paper: "var(--color-paper)",
+                lime: "var(--color-lime)",
+                muted: "var(--color-muted)"
+              },
+              fontFamily: {
+                body: ["DM Sans", "sans-serif"],
+                display: ["Pixelify Sans", "monospace"]
+              },
+              spacing: {
+                section: "var(--space-section)"
+              }
+            }
+          }
+        }
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
+    <script src="main.js" defer></script>
+  </head>
+  <body class="bg-ink font-body text-paper antialiased">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="page-frame">
+      <header class="site-header" id="home">
+        <a class="wordmark" href="#home" aria-label="Jimoh AbdulRasheed, home">
+          <span class="wordmark-mark" aria-hidden="true">&lt;j /&gt;</span>
+          <span>JIMOH</span>
+        </a>
+
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+          <span class="menu-toggle-label">Menu</span>
+          <span class="menu-toggle-icon" aria-hidden="true"><i></i><i></i></span>
+        </button>
+
+        <nav class="site-nav" id="primary-navigation" aria-label="Main navigation">
+          <a class="nav-link is-current" href="#home">Home</a>
+          <a class="nav-link" href="#work">What I make</a>
+          <a class="nav-link" href="#about">About</a>
+        </nav>
+        <a class="header-cta" href="#work">
+          <span>Explore my work</span>
+          <span aria-hidden="true">↘</span>
+        </a>
+      </header>
+
+      <main id="main">
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="hero-copy">
+            <p class="eyebrow" data-reveal>
+              <span class="status-dot" aria-hidden="true"></span>
+              Developer <span class="eyebrow-slash">/</span> Designer <span class="eyebrow-slash">/</span> Problem solver
+            </p>
+            <h1 class="hero-title" id="hero-title" data-reveal>
+              <span>Jimoh</span>
+              <span class="hero-title-last">AbdulRasheed<span class="title-period">.</span></span>
+            </h1>
+            <div class="hero-bottom" id="about" data-reveal>
+              <p class="hero-description">
+                I’m a developer, designer, and curious learner who likes figuring things out —
+                usually by building, breaking, and trying again.
+              </p>
+              <div class="hero-actions">
+                <a class="button button-primary" href="#work">
+                  <span>See what I make</span>
+                  <span class="button-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="text-link" href="#work">A little more about my work <span aria-hidden="true">↓</span></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-visual" data-reveal>
+            <div class="visual-frame" aria-hidden="true">
+              <span class="frame-index">JR—001</span>
+              <span class="frame-cross frame-cross-one"></span>
+              <span class="frame-cross frame-cross-two"></span>
+              <span class="frame-coordinate">9°04' N<br>7°29' E</span>
+              <div class="pixel-block pixel-block-one"></div>
+              <div class="pixel-block pixel-block-two"></div>
+              <div class="pixel-block pixel-block-three"></div>
+              <div class="portrait-disc"></div>
+            </div>
+            <img class="portrait" src="../public/images/me-hero.png" alt="Portrait of Jimoh AbdulRasheed">
+            <div class="visual-caption">
+              <span>Curiosity, in progress</span>
+              <span class="caption-line" aria-hidden="true"></span>
+              <span>01 — 01</span>
+            </div>
+            <span class="visual-side-note" aria-hidden="true">BUILD / BREAK / REPEAT</span>
+          </div>
+
+          <a class="scroll-cue" href="#work" aria-label="Scroll to explore what Jimoh makes">
+            <span class="scroll-cue-line" aria-hidden="true"></span>
+            <span>Scroll to explore</span>
+            <span aria-hidden="true">↓</span>
+          </a>
+          <span class="hero-index" aria-hidden="true">PORTFOLIO — 2025</span>
+        </section>
+
+        <section class="work-strip" id="work" aria-labelledby="work-title" data-reveal>
+          <div class="work-intro">
+            <p class="eyebrow">A few ways I think</p>
+            <h2 id="work-title">Ideas into <span>something real.</span></h2>
+          </div>
+          <div class="work-types" aria-label="Things I like to build">
+            <span><b>01</b> Websites</span>
+            <span><b>02</b> Experiments</span>
+            <span><b>03</b> Digital products</span>
+          </div>
+          <a class="work-back" href="#home" aria-label="Back to top">↑</a>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <span>JIMOH ABDULRASHEED</span>
+        <span>DEVELOPER · DESIGNER · CURIOUS LEARNER</span>
+        <a href="#home">Back to top ↑</a>
+      </footer>
+    </div>
+  </body>
+</html>

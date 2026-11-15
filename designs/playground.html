@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#11130f">
+    <meta name="description" content="Jimoh AbdulRasheed — developer, designer, and curious learner.">
+    <title>03 — The Playground | Jimoh AbdulRasheed</title>
+    <script>
+      tailwind = {
+        config: {
+          theme: {
+            extend: {
+              colors: {
+                ink: "var(--color-ink)",
+                paper: "var(--color-paper)",
+                lime: "var(--color-lime)",
+                muted: "var(--color-muted)"
+              },
+              fontFamily: {
+                body: ["DM Sans", "sans-serif"],
+                display: ["Pixelify Sans", "monospace"]
+              }
+            }
+          }
+        }
+      };
+    </script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../v1/styles.css">
+    <script src="../v1/main.js" defer></script>
+    <style>
+      .variant-play {
+        --color-ink: #11130f;
+        --color-paper: #f2f1e9;
+        --color-lime: #c1ff00;
+        --color-muted: #a4a69e;
+        background-image: radial-gradient(ellipse at 70% 48%, rgb(193 255 0 / 8%), transparent 36%);
+      }
+
+      .play-hero {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(12, minmax(0, 1fr));
+        grid-template-rows: auto minmax(15rem, auto) auto;
+        align-items: center;
+        min-height: min(740px, calc(100svh - 5.75rem));
+        gap: 0 1rem;
+        padding-block: clamp(4rem, 9vh, 7rem) 6rem;
+      }
+
+      .play-copy {
+        display: contents;
+      }
+
+      .play-kicker {
+        z-index: 3;
+        grid-column: 1 / 8;
+        grid-row: 1;
+        align-self: end;
+        width: fit-content;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.65rem;
+        padding: 0.55rem 0.7rem;
+        border: 1px solid var(--color-rule);
+        color: var(--color-muted);
+        font-family: var(--font-display);
+        font-size: 0.66rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .play-kicker span {
+        width: 0.5rem;
+        height: 0.5rem;
+        background: var(--color-lime);
+      }
+
+      .play-title {
+        z-index: 2;
+        grid-column: 1 / 13;
+        grid-row: 2;
+        align-self: center;
+        margin: 1.15rem 0;
+        font-family: var(--font-display);
+        font-size: clamp(4.5rem, 9vw, 8.5rem);
+        font-weight: 400;
+        letter-spacing: -0.075em;
+        line-height: 0.84;
+        text-transform: uppercase;
+      }
+
+      .play-title span {
+        display: block;
+      }
+
+      .play-title span:first-child {
+        display: inline;
+      }
+
+      .play-title span:first-child::after {
+        content: " ";
+      }
+
+      .play-title span:last-child {
+        color: var(--color-lime);
+      }
+
+      .play-description {
+        max-width: 29rem;
+        margin: 1.5rem 0 0;
+        color: #c3c4bc;
+        font-size: 1rem;
+        line-height: 1.75;
+      }
+
+      #about {
+        z-index: 3;
+        grid-column: 2 / 7;
+        grid-row: 3;
+        align-self: start;
+        padding-block: 0.75rem 1rem;
+      }
+
+      .play-hero .hero-actions {
+        margin-top: 1.6rem;
+      }
+
+      .play-art {
+        z-index: 1;
+        grid-column: 6 / 13;
+        grid-row: 1 / 4;
+        position: relative;
+        display: grid;
+        min-height: clamp(350px, 42vw, 510px);
+        place-items: center;
+        perspective: 900px;
+        margin-block: 1.5rem 2rem;
+      }
+
+      .orbit {
+        position: absolute;
+        width: min(90%, 28rem);
+        aspect-ratio: 1;
+        border: 1px dashed rgb(242 241 233 / 23%);
+        border-radius: 50%;
+        transform: rotate(-24deg) scaleY(0.55);
+      }
+
+      .orbit::before,
+      .orbit::after {
+        position: absolute;
+        width: 0.55rem;
+        height: 0.55rem;
+        background: var(--color-lime);
+        content: "";
+      }
+
+      .orbit::before {
+        top: 10%;
+        left: 18%;
+      }
+
+      .orbit::after {
+        right: 10%;
+        bottom: 17%;
+        background: #ff8761;
+      }
+
+      .cube-float {
+        position: relative;
+        width: clamp(140px, 20vw, 220px);
+        aspect-ratio: 1;
+        transform-style: preserve-3d;
+        animation: cube-drift 7s ease-in-out infinite;
+      }
+
+      .cube-face {
+        position: absolute;
+        display: grid;
+        width: 100%;
+        height: 100%;
+        grid-template: repeat(3, 1fr) / repeat(3, 1fr);
+        gap: 5px;
+        padding: 6px;
+        border: 1px solid rgb(242 241 233 / 45%);
+        background: #252820;
+        backface-visibility: hidden;
+      }
+
+      .cube-face span {
+        border: 1px solid rgb(17 19 15 / 24%);
+        background: var(--tile-color, var(--color-lime));
+      }
+
+      .cube-face--front {
+        transform: translateZ(calc(clamp(140px, 20vw, 220px) / 2));
+      }
+
+      .cube-face--back {
+        transform: rotateY(180deg) translateZ(calc(clamp(140px, 20vw, 220px) / 2));
+      }
+
+      .cube-face--right {
+        transform: rotateY(90deg) translateZ(calc(clamp(140px, 20vw, 220px) / 2));
+      }
+
+      .cube-face--left {
+        transform: rotateY(-90deg) translateZ(calc(clamp(140px, 20vw, 220px) / 2));
+      }
+
+      .cube-face--top {
+        transform: rotateX(90deg) translateZ(calc(clamp(140px, 20vw, 220px) / 2));
+      }
+
+      .cube-face--bottom {
+        transform: rotateX(-90deg) translateZ(calc(clamp(140px, 20vw, 220px) / 2));
+      }
+
+      .cube-face--front span:nth-child(3n + 1) {
+        --tile-color: #c1ff00;
+      }
+
+      .cube-face--front span:nth-child(3n + 2) {
+        --tile-color: #dfff70;
+      }
+
+      .cube-face--right span:nth-child(odd) {
+        --tile-color: #ff8761;
+      }
+
+      .cube-face--right span:nth-child(even) {
+        --tile-color: #ffad8e;
+      }
+
+      .cube-face--top span:nth-child(2n) {
+        --tile-color: #bfa7ff;
+      }
+
+      .cube-face--top span:nth-child(odd) {
+        --tile-color: #ddd1ff;
+      }
+
+      .float-label {
+        position: absolute;
+        padding: 0.55rem 0.7rem;
+        border: 1px solid var(--color-rule);
+        background: #171913;
+        color: var(--color-paper);
+        font-family: var(--font-display);
+        font-size: 0.62rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        animation: label-drift 5s ease-in-out infinite alternate;
+      }
+
+      .float-label--build {
+        top: 20%;
+        left: 2%;
+        color: var(--color-lime);
+      }
+
+      .float-label--ideas {
+        right: 0;
+        bottom: 23%;
+        animation-delay: -2s;
+      }
+
+      .float-spark {
+        position: absolute;
+        top: 22%;
+        right: 17%;
+        color: #bfa7ff;
+        font-size: 2rem;
+      }
+
+      .play-art-note {
+        position: absolute;
+        right: 1rem;
+        bottom: 0;
+        left: 1rem;
+        display: flex;
+        justify-content: space-between;
+        border-top: 1px solid var(--color-rule);
+        padding-top: 0.7rem;
+        color: var(--color-muted);
+        font-family: var(--font-display);
+        font-size: 0.62rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .play-hero .hero-index,
+      .play-hero .scroll-cue {
+        bottom: 1.5rem;
+      }
+
+      .variant-play .variation-nav a {
+        border-color: var(--color-rule);
+      }
+
+      @keyframes cube-drift {
+        0%, 100% {
+          transform: translateY(0) rotateX(-18deg) rotateY(-29deg) rotateZ(5deg);
+        }
+        50% {
+          transform: translateY(-13px) rotateX(-9deg) rotateY(-11deg) rotateZ(-2deg);
+        }
+      }
+
+      @keyframes label-drift {
+        from {
+          transform: translateY(0);
+        }
+        to {
+          transform: translateY(-8px);
+        }
+      }
+
+      @media (max-width: 760px) {
+        .play-hero {
+          min-height: auto;
+          grid-template-columns: repeat(6, minmax(0, 1fr));
+          grid-template-rows: auto auto auto auto;
+          gap: 0;
+          padding-block: 4rem 5.5rem;
+        }
+
+        .play-kicker {
+          grid-column: 1 / 7;
+          grid-row: 1;
+        }
+
+        .play-title {
+          grid-column: 1 / 7;
+          grid-row: 2;
+          font-size: clamp(3.7rem, 12.5vw, 6rem);
+        }
+
+        .play-art {
+          grid-column: 1 / 7;
+          grid-row: 3;
+          width: min(100%, 30rem);
+          min-height: clamp(330px, 85vw, 420px);
+          justify-self: center;
+          margin-block: 0 1.75rem;
+        }
+
+        #about {
+          grid-column: 1 / 7;
+          grid-row: 4;
+          padding: 0;
+        }
+
+        .orbit {
+          width: 78%;
+        }
+
+        .float-label--build {
+          left: 5%;
+        }
+
+        .play-hero .hero-index,
+        .play-hero .scroll-cue {
+          bottom: 1.5rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .cube-float,
+        .float-label {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="variant-play bg-ink font-body text-paper antialiased">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <div class="page-frame">
+      <header class="site-header" id="home">
+        <a class="wordmark" href="#home" aria-label="Jimoh AbdulRasheed, home">
+          <span class="wordmark-mark" aria-hidden="true">&lt;j /&gt;</span>
+          <span>JIMOH</span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+          <span class="menu-toggle-label">Menu</span>
+          <span class="menu-toggle-icon" aria-hidden="true"><i></i><i></i></span>
+        </button>
+        <nav class="site-nav" id="primary-navigation" aria-label="Main navigation">
+          <a class="nav-link is-current" href="#home">Home</a>
+          <a class="nav-link" href="#work">What I make</a>
+          <a class="nav-link" href="#about">About</a>
+        </nav>
+        <a class="header-cta" href="#work"><span>Explore my work</span><span aria-hidden="true">↘</span></a>
+      </header>
+
+      <main id="main">
+        <section class="play-hero" aria-labelledby="hero-title">
+          <div class="play-copy">
+            <p class="play-kicker" data-reveal><span aria-hidden="true"></span> Curious by design</p>
+            <h1 class="play-title" id="hero-title" data-reveal>
+              <span>Make it</span>
+              <span>matter.</span>
+            </h1>
+            <div id="about" data-reveal>
+              <p class="play-description">
+                I’m Jimoh AbdulRasheed — a developer, designer, and curious learner.
+                I turn a good question into something you can click, use, and enjoy.
+              </p>
+              <div class="hero-actions">
+                <a class="button button-primary" href="#work">
+                  <span>Explore my work</span><span class="button-arrow" aria-hidden="true">↗</span>
+                </a>
+                <a class="text-link" href="#work">Ideas into something real <span aria-hidden="true">↓</span></a>
+              </div>
+            </div>
+          </div>
+
+          <div class="play-art" aria-label="A playful 3D Rubik's cube illustration" data-reveal>
+            <div class="orbit" aria-hidden="true"></div>
+            <span class="float-label float-label--build" aria-hidden="true">Build / 001</span>
+            <span class="float-label float-label--ideas" aria-hidden="true">Ideas in motion</span>
+            <span class="float-spark" aria-hidden="true">✳</span>
+            <div class="cube-float" aria-hidden="true">
+              <div class="cube-face cube-face--front"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+              <div class="cube-face cube-face--back"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+              <div class="cube-face cube-face--right"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+              <div class="cube-face cube-face--left"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+              <div class="cube-face cube-face--top"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+              <div class="cube-face cube-face--bottom"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            </div>
+            <div class="play-art-note" aria-hidden="true"><span>Curiosity, in progress</span><span>3D / 001</span></div>
+          </div>
+
+          <a class="scroll-cue" href="#work" aria-label="Scroll to explore what Jimoh makes">
+            <span class="scroll-cue-line" aria-hidden="true"></span><span>Scroll to explore</span><span aria-hidden="true">↓</span>
+          </a>
+          <span class="hero-index" aria-hidden="true">PORTFOLIO — 2025</span>
+        </section>
+
+        <section class="work-strip" id="work" aria-labelledby="work-title" data-reveal>
+          <div class="work-intro">
+            <p class="eyebrow">A few ways I think</p>
+            <h2 id="work-title">Ideas into <span>something real.</span></h2>
+          </div>
+          <div class="work-types" aria-label="Things I like to build">
+            <span><b>01</b> Websites</span>
+            <span><b>02</b> Experiments</span>
+            <span><b>03</b> Digital products</span>
+          </div>
+          <a class="work-back" href="#home" aria-label="Back to top">↑</a>
+        </section>
+      </main>
+
+      <footer class="site-footer">
+        <span>JIMOH ABDULRASHEED</span>
+        <span>DEVELOPER · DESIGNER · CURIOUS LEARNER</span>
+        <nav class="variation-nav" aria-label="Home page concepts">
+          <a href="index.html">01 Grid</a>
+          <a href="type-only.html">02 Type</a>
+          <a aria-current="page" href="playground.html">03 Play</a>
+        </nav>
+      </footer>
+    </div>
+  </body>
+</html>
