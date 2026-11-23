@@ -11,7 +11,10 @@ import PortfolioInteractions from "@/components/PortfolioInteractions";
 export default function Home() {
   return (
     <>
-      <a className="skip-link" href="#main">
+      <a
+        className="fixed left-3 top-3 z-[110] -translate-y-[160%] bg-neon px-4 py-3 font-bold text-background focus:translate-y-0"
+        href="#main"
+      >
         Skip to content
       </a>
       <Navbar />

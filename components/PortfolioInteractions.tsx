@@ -1,62 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
-type LoaderPixel = {
-  column: number;
-  row: number;
-  delay: number;
-};
-
-function createPixelReveal(columns: number, rows: number) {
-  const total = columns * rows;
-  const remaining = new Set(Array.from({ length: total }, (_, index) => index));
-  const groups: number[][] = [];
-
-  while (remaining.size > 0) {
-    const availableSeeds = Array.from(remaining);
-    const seed = availableSeeds[Math.floor(Math.random() * availableSeeds.length)];
-    const group = [seed];
-    remaining.delete(seed);
-
-    while (group.length < 5 && remaining.size > 0) {
-      const neighbors = new Set<number>();
-
-      for (const index of group) {
-        const column = index % columns;
-        const row = Math.floor(index / columns);
-        if (column > 0) neighbors.add(index - 1);
-        if (column < columns - 1) neighbors.add(index + 1);
-        if (row > 0) neighbors.add(index - columns);
-        if (row < rows - 1) neighbors.add(index + columns);
-      }
-
-      const candidates = Array.from(neighbors).filter((index) => remaining.has(index));
-      if (candidates.length === 0) break;
-
-      const next = candidates[Math.floor(Math.random() * candidates.length)];
-      group.push(next);
-      remaining.delete(next);
-    }
-
-    groups.push(group);
-  }
-
-  const groupDelay = Math.min(80, Math.max(38, 2500 / groups.length));
-  const pixels: LoaderPixel[] = [];
-
-  groups.forEach((group, groupIndex) => {
-    group.forEach((index) => {
-      pixels.push({
-        column: index % columns,
-        row: Math.floor(index / columns),
-        delay: groupIndex * groupDelay,
-      });
-    });
-  });
-
-  return { pixels, duration: groups.length * groupDelay + 650 };
-}
+import { createPixelReveal, type LoaderPixel } from "@/lib/pixel-reveal";
 
 export default function PortfolioInteractions() {
   const [count, setCount] = useState(0);
@@ -123,13 +68,13 @@ export default function PortfolioInteractions() {
         scrollFrame = 0;
 
         const sectionTop = aboutSection.getBoundingClientRect().top + window.scrollY;
-        const scrollRange = aboutSection.offsetHeight - stage.clientHeight;
+        const availableScroll = aboutSection.offsetHeight - stage.clientHeight;
+        const releaseHold = Math.min(stage.clientHeight * 0.4, availableScroll * 0.25);
+        const scrollRange = availableScroll - releaseHold;
         const progress = clamp((window.scrollY - sectionTop) / scrollRange);
         const expansion = clamp((progress - 0.04) / 0.72);
         const easedExpansion = expansion * expansion * (3 - 2 * expansion);
-        const coverScale =
-          Math.max(stage.clientWidth, stage.clientHeight) / image.offsetWidth * 1.08;
-        const imageScale = 1 + (coverScale - 1) * easedExpansion;
+        const revealRadius = Math.hypot(stage.clientWidth, stage.clientHeight) * easedExpansion;
         const separation = stage.clientWidth * 0.42 * progress;
         const imageOpacity = clamp((progress - 0.08) / 0.18);
         const titleOpacity = 1 - clamp((progress - 0.62) / 0.14);
@@ -138,7 +83,7 @@ export default function PortfolioInteractions() {
 
         topWord.style.transform = `translateX(${-separation}px)`;
         bottomWord.style.transform = `translateX(${separation}px)`;
-        image.style.transform = `translate(-50%, -50%) scale(${imageScale})`;
+        image.style.clipPath = `circle(${revealRadius}px at 50% 50%)`;
         image.style.opacity = String(imageOpacity);
         title.style.opacity = String(titleOpacity);
         overlay.style.opacity = String(overlayOpacity);

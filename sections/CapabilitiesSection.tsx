@@ -35,11 +35,14 @@ function PixelMark() {
 export default function CapabilitiesSection() {
   return (
     <section
-      className="capabilities page-frame"
+      className="capabilities page-frame border-t-0 py-[clamp(4.5rem,10vw,8rem)] scroll-mt-8 max-[760px]:py-[4.5rem]"
       id="capabilities"
       aria-labelledby="capabilities-title"
     >
-      <div className="section-heading" data-reveal>
+      <div
+        className="section-heading mb-[clamp(2.5rem,5vw,4.5rem)] grid grid-cols-1 items-end gap-4 min-[761px]:grid-cols-[minmax(0,1fr)_minmax(16rem,0.7fr)] min-[761px]:gap-8"
+        data-reveal
+      >
         <div>
           <p className="section-kicker">How I can help · 01—03</p>
           <h2 className="section-title" id="capabilities-title">
@@ -52,7 +55,7 @@ export default function CapabilitiesSection() {
         </p>
       </div>
 
-      <div className="capabilities-grid">
+      <div className="capabilities-grid grid grid-cols-1 gap-[clamp(0.8rem,1.8vw,1.5rem)] min-[761px]:grid-cols-3">
         {capabilities.map((capability) => (
           <article className="capability-card" data-reveal key={capability.label}>
             <div className="capability-card-index">

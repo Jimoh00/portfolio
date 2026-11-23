@@ -10,10 +10,10 @@ export default function AboutSection() {
         </h2>
         <div className="about-image" aria-hidden="true">
           <Image
-            src="/project-preview.svg"
+            src="/images/about-me.png"
             alt=""
             fill
-            sizes="(max-width: 680px) 48vw, 18vw"
+            sizes="100vw"
           />
         </div>
         <div className="about-overlay" aria-hidden="true" />

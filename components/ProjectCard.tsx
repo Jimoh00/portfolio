@@ -36,7 +36,7 @@ export default function ProjectCard({
         </div>
         <span className="project-index">PROJECT / {index}</span>
         <div className="project-pixel-mask" aria-hidden="true">
-          {getPixelPositions("top", 32, 4).map(({ column, row }) => (
+          {getPixelPositions("top", 24, 4).map(({ column, row }) => (
             <span
               key={`${row}-${column}`}
               style={{ gridColumn: column + 1, gridRow: row + 1 }}
